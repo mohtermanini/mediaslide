@@ -9,7 +9,7 @@ class UserRepository implements UserRepositoryInterface
 {
     public function findById(int $id): ?User
     {
-        return User::find($id);
+        return User::with(['profile', 'role', 'status'])->find($id);
     }
 
     public function findByEmail(string $email): ?User
