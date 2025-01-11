@@ -18,22 +18,22 @@ class BookingSeeder extends Seeder
 
         DB::table('bookings')->insert([
             [
-                'customer_name' => $faker->name,
+                'customer_name' => $faker->firstName(),
                 'fashion_model_id' => 1,
                 'booking_date' => now()->subDays(20),
             ],
             [
-                'customer_name' => $faker->name,
+                'customer_name' => $faker->firstName(),
                 'fashion_model_id' => 1,
                 'booking_date' => now()->addMonth(),
             ],
             [
-                'customer_name' => $faker->name,
+                'customer_name' => $faker->firstName(),
                 'fashion_model_id' => 2,
                 'booking_date' => now()->addWeeks(2),
             ],
             [
-                'customer_name' => $faker->name,
+                'customer_name' => $faker->firstName(),
                 'fashion_model_id' => 1,
                 'booking_date' => now()->addWeek(),
             ],

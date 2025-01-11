@@ -18,7 +18,7 @@ class FashionModelFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->regexify('[A-Za-z0-9]{10}'),
+            'name' => $this->faker->firstName(),
             'description' => $this->faker->paragraph(),
             'date_of_birth' => $this->faker->date('Y-m-d', '-18 years'),
             'height' => $this->faker->numberBetween(150, 200),
