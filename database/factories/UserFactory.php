@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Enums\RolesEnum;
+use App\Enums\UserStatusesEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -37,7 +38,7 @@ class UserFactory extends Factory
      */
     public function unverified(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn(array $attributes) => [
             'email_verified_at' => null,
         ]);
     }
@@ -47,8 +48,23 @@ class UserFactory extends Factory
         return $this->state(['role_id' => RolesEnum::ADMIN]);
     }
 
-    public function viewer()
+    public function customer()
     {
-        return $this->state(['role_id' => RolesEnum::VIEWER]);
+        return $this->state(['role_id' => RolesEnum::CUSTOMER]);
+    }
+
+    public function active()
+    {
+        return $this->state(['status_id' => UserStatusesEnum::ACTIVE]);
+    }
+
+    public function inActive()
+    {
+        return $this->state(['status_id' => UserStatusesEnum::INACTIVE]);
+    }
+
+    public function blocked()
+    {
+        return $this->state(['status_id' => UserStatusesEnum::BLOCKED]);
     }
 }

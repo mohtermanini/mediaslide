@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\GendersEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,8 +18,9 @@ class ProfileFactory extends Factory
     public function definition(): array
     {
         return [
-            'first_name' => fake()->firstName(),
-            'last_name' => fake()->lastName()
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
+            'gender' => $this->faker->randomElement([GendersEnum::MALE->value, GendersEnum::FEMALE->value]),
         ];
     }
 }

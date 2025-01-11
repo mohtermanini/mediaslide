@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Profile;
 
+use App\Enums\GendersEnum;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -18,7 +19,7 @@ class ProfileResource extends JsonResource
             'id' => $this->id,
             'firstName' => $this->first_name,
             'lastName' => $this->last_name,
-            //will call accessor in Profile Model
+            'gender' => strtolower(GendersEnum::from($this->gender)->name),
             'fullName' => $this->full_name
         ];
     }

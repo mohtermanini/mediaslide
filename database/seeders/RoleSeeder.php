@@ -17,8 +17,7 @@ class RoleSeeder extends Seeder
         $date_now = Carbon::now();
 
         Role::insert([
-            ['name' => 'Admin', 'created_at' => $date_now, 'updated_at' => $date_now],
-            ['name' => 'Viewer', 'created_at' => $date_now, 'updated_at' => $date_now],
+            ['name' => 'Admin', 'description' => 'Has full access to manage the system.', 'created_at' => $date_now, 'updated_at' => $date_now],
         ]);
     }
 }

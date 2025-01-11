@@ -2,13 +2,21 @@
 
 namespace App\Services;
 
-use App\Models\User;
+use App\Interfaces\Repositories\UserRepositoryInterface;
 
 class UserService
 {
+    protected $userRepository;
+
+    public function __construct(UserRepositoryInterface $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
     public function getUser($id)
     {
-        $user = User::find($id);
+        $user = $this->userRepository->findById($id);
+
         if (!$user) {
             throw new \Exception('User Not Found.', 404);
         }
@@ -18,10 +26,6 @@ class UserService
 
     public function getUserByEmail($email = null)
     {
-        $user = User::with(['profile', 'role'])
-            ->where('email', $email)
-            ->first();
-
-        return $user;
+        return $this->userRepository->findByEmail($email);
     }
 }

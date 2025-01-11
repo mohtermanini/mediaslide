@@ -27,7 +27,6 @@ class AuthController extends Controller
             );
 
             $token = (new CreateAuthTokenAction)->execute($user, $storeAuthRequest->userAgent());
-
         } catch (\Exception $e) {
             return response()->json([
                 'message' => $e->getMessage()

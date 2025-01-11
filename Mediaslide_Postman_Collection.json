@@ -1,0 +1,941 @@
+{
+	"info": {
+		"_postman_id": "420fd2d6-ba05-40c2-97fb-699805ac71ba",
+		"name": "Mediaslide",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38728118"
+	},
+	"item": [
+		{
+			"name": "V1",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response.json();\r",
+											"const token = response.data.token;\r",
+											"pm.collectionVariables.set(\"token\", token);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "mohtermanini.job@gmail.com",
+											"description": "Required",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Password123",
+											"description": "Required",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrlV1}}/auth",
+									"host": [
+										"{{baseUrlV1}}"
+									],
+									"path": [
+										"auth"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrlV1}}/auth",
+									"host": [
+										"{{baseUrlV1}}"
+									],
+									"path": [
+										"auth"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Authenticated User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrlV1}}/auth",
+									"host": [
+										"{{baseUrlV1}}"
+									],
+									"path": [
+										"auth"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "Get All Categories",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrlV1}}/categories",
+									"host": [
+										"{{baseUrlV1}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrlV1}}/categories/:id",
+									"host": [
+										"{{baseUrlV1}}"
+									],
+									"path": [
+										"categories",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Test Category",
+											"description": "Required | Alphanumeric",
+											"type": "text"
+										},
+										{
+											"key": "categoryId",
+											"value": "1",
+											"description": "Optional",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrlV1}}/categories",
+									"host": [
+										"{{baseUrlV1}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Test Category",
+											"type": "text"
+										},
+										{
+											"key": "categoryId",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrlV1}}/categories/:id",
+									"host": [
+										"{{baseUrlV1}}"
+									],
+									"path": [
+										"categories",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrlV1}}/categories/:id",
+									"host": [
+										"{{baseUrlV1}}"
+									],
+									"path": [
+										"categories",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Fashion Model",
+					"item": [
+						{
+							"name": "Get All Fashion Models",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrlV1}}/fashion-models?categoryIds[]=2&searchBy=Bruen&pageSize=10",
+									"host": [
+										"{{baseUrlV1}}"
+									],
+									"path": [
+										"fashion-models"
+									],
+									"query": [
+										{
+											"key": "categoryIds[]",
+											"value": "2"
+										},
+										{
+											"key": "categoryIds[]",
+											"value": "15",
+											"disabled": true
+										},
+										{
+											"key": "searchBy",
+											"value": "Bruen",
+											"description": "by name | by description"
+										},
+										{
+											"key": "pageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Fashion Model",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrlV1}}/fashion-models/:id",
+									"host": [
+										"{{baseUrlV1}}"
+									],
+									"path": [
+										"fashion-models",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Fashion Model",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Spinka",
+											"description": "Required | Alphanumeric",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Fashion Description",
+											"description": "Optional",
+											"type": "text"
+										},
+										{
+											"key": "dateOfBirth",
+											"value": "2010-10-03",
+											"description": "Required",
+											"type": "text"
+										},
+										{
+											"key": "height",
+											"value": "51",
+											"description": "Required",
+											"type": "text"
+										},
+										{
+											"key": "shoeSize",
+											"value": "10.2",
+											"description": "Required",
+											"type": "text"
+										},
+										{
+											"key": "gender",
+											"value": "0",
+											"description": "0 for male | 1 for female",
+											"type": "text"
+										},
+										{
+											"key": "categoryId",
+											"value": "2",
+											"description": "Optional",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrlV1}}/fashion-models",
+									"host": [
+										"{{baseUrlV1}}"
+									],
+									"path": [
+										"fashion-models"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Fashion Model",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Spinka",
+											"description": "Required | Alphanumeric",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Fashion Description23123",
+											"description": "Optional",
+											"type": "text"
+										},
+										{
+											"key": "dateOfBirth",
+											"value": "2010-10-03",
+											"description": "Required",
+											"type": "text"
+										},
+										{
+											"key": "height",
+											"value": "51",
+											"description": "Required",
+											"type": "text"
+										},
+										{
+											"key": "shoeSize",
+											"value": "10.2",
+											"description": "Required",
+											"type": "text"
+										},
+										{
+											"key": "gender",
+											"value": "0",
+											"description": "0 for male | 1 for female",
+											"type": "text"
+										},
+										{
+											"key": "categoryId",
+											"value": "2",
+											"description": "Optional",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrlV1}}/fashion-models/:id",
+									"host": [
+										"{{baseUrlV1}}"
+									],
+									"path": [
+										"fashion-models",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Fashion Model",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrlV1}}/fashion-models/:id",
+									"host": [
+										"{{baseUrlV1}}"
+									],
+									"path": [
+										"fashion-models",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Upload Fashion Model Images",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "images[]",
+											"type": "file",
+											"src": "/C:/Users/mohte/Pictures/Screenshots/Screenshot 2024-11-07 171543.png"
+										},
+										{
+											"key": "images[]",
+											"type": "file",
+											"src": "/C:/Users/mohte/Pictures/Screenshots/Screenshot 2024-11-23 042509.png"
+										},
+										{
+											"key": "altText",
+											"value": "fake alt text",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrlV1}}/fashion-models/:id/images",
+									"host": [
+										"{{baseUrlV1}}"
+									],
+									"path": [
+										"fashion-models",
+										":id",
+										"images"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Fashion Model Images",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrlV1}}/fashion-models/:modelId/images?imageIds[]=5&imageIds[]=4",
+									"host": [
+										"{{baseUrlV1}}"
+									],
+									"path": [
+										"fashion-models",
+										":modelId",
+										"images"
+									],
+									"query": [
+										{
+											"key": "imageIds[]",
+											"value": "5"
+										},
+										{
+											"key": "imageIds[]",
+											"value": "4"
+										}
+									],
+									"variable": [
+										{
+											"key": "modelId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Booking",
+					"item": [
+						{
+							"name": "Get All Bookings",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{baseUrlV1}}/bookings?customerName=Spinka&modelIds[]=1&fromDate=2024-12-21&toDate=2024-12-28&pageSize=10",
+									"host": [
+										"{{baseUrlV1}}"
+									],
+									"path": [
+										"bookings"
+									],
+									"query": [
+										{
+											"key": "customerName",
+											"value": "Spinka"
+										},
+										{
+											"key": "modelIds[]",
+											"value": "1"
+										},
+										{
+											"key": "modelIds[]",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "fromDate",
+											"value": "2024-12-21"
+										},
+										{
+											"key": "toDate",
+											"value": "2024-12-28"
+										},
+										{
+											"key": "pageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Booking",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "customerName",
+											"value": "Spinka",
+											"description": "Required | Alphanumeric",
+											"type": "text"
+										},
+										{
+											"key": "modelId",
+											"value": "1",
+											"description": "Required",
+											"type": "text"
+										},
+										{
+											"key": "bookingDate",
+											"value": "2012-10-3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrlV1}}/bookings",
+									"host": [
+										"{{baseUrlV1}}"
+									],
+									"path": [
+										"bookings"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": ""
+		},
+		{
+			"key": "baseUrlV1",
+			"value": "http://127.0.0.1:8000/api/v1",
+			"type": "string"
+		}
+	]
+}

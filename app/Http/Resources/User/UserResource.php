@@ -4,6 +4,7 @@ namespace App\Http\Resources\User;
 
 use App\Http\Resources\Profile\ProfileResource;
 use App\Http\Resources\Role\RoleResource;
+use App\Http\Resources\UserStatus\UserStatusResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -19,9 +20,9 @@ class UserResource extends JsonResource
         return [
             'id' => $this->id,
             'email' => $this->email,
-            //load relationship into the response if it exist in modelObject
             'profile' => new ProfileResource($this->whenLoaded('profile')),
-            'role' => new RoleResource($this->whenLoaded('role'))
+            'role' => new RoleResource($this->whenLoaded('role')),
+            'status' => new UserStatusResource($this->whenLoaded('status')),
         ];
     }
 }

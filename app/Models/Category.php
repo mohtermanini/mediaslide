@@ -9,11 +9,20 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'category_id'];
 
-    public function books()
+    public function fashionModels()
     {
-        // return $this->hasMany(RelatedModel::class, 'foreign_key_in_related_model', 'primary_key_in_current_model');
-        return $this->hasMany(Book::class, 'category_id', 'id');
+        return $this->hasMany(FashionModel::class, 'category_id', 'id');
+    }
+
+    public function parentCategory()
+    {
+        return $this->belongsTo(Category::class, 'category_id', 'id')->with('parentCategory');
+    }
+
+    public function childrenCategories()
+    {
+        return $this->hasMany(Category::class, 'category_id')->with('childrenCategories');
     }
 }

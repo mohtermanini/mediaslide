@@ -16,7 +16,9 @@ class CategoryResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name
+            'name' => $this->name,
+            'parentCategory' => new CategoryResource($this->whenLoaded('parentCategory')),
+            'childrenCategories' => new CategoryCollection($this->whenLoaded('childrenCategories')),
         ];
     }
 }

@@ -24,7 +24,6 @@ class StoreAuthRequest extends FormRequest
     {
         return [
             'email' => ['required', 'email'],
-            //Password default rules are defined in [AppServiceProvider]
             'password' => ['required', Password::defaults()]
         ];
     }

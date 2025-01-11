@@ -2,9 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Profile;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -21,10 +19,12 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
                 'password' => $user['password'],
                 'role_id' => $user['role_id'],
+                'status_id' => $user['status_id'],
             ]);
             $created_user->profile()->create([
                 'first_name' => $user['profile']['first_name'],
                 'last_name' => $user['profile']['last_name'],
+                'gender' => $user['profile']['gender'],
             ]);
         }
     }
