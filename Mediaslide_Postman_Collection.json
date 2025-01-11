@@ -286,12 +286,14 @@
 									"urlencoded": [
 										{
 											"key": "name",
-											"value": "Test Category",
+											"value": "Updated Test Category",
+											"description": "Required | Alphanumeric",
 											"type": "text"
 										},
 										{
 											"key": "categoryId",
 											"value": "1",
+											"description": "Optional",
 											"type": "text"
 										}
 									]
@@ -382,7 +384,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrlV1}}/fashion-models?categoryIds[]=2&searchBy=Bruen&pageSize=10",
+									"raw": "{{baseUrlV1}}/fashion-models",
 									"host": [
 										"{{baseUrlV1}}"
 									],
@@ -392,21 +394,24 @@
 									"query": [
 										{
 											"key": "categoryIds[]",
-											"value": "2"
+											"value": "1",
+											"disabled": true
 										},
 										{
 											"key": "categoryIds[]",
-											"value": "15",
+											"value": "7",
 											"disabled": true
 										},
 										{
 											"key": "searchBy",
 											"value": "Bruen",
-											"description": "by name | by description"
+											"description": "by name | by description",
+											"disabled": true
 										},
 										{
 											"key": "pageSize",
-											"value": "10"
+											"value": "10",
+											"disabled": true
 										}
 									]
 								}
@@ -485,7 +490,7 @@
 										},
 										{
 											"key": "description",
-											"value": "Fashion Description",
+											"value": "Fashion Model Description",
 											"description": "Optional",
 											"type": "text"
 										},
@@ -566,7 +571,7 @@
 										},
 										{
 											"key": "description",
-											"value": "Fashion Description23123",
+											"value": "Fashion Model Description",
 											"description": "Optional",
 											"type": "text"
 										},
@@ -697,8 +702,10 @@
 										},
 										{
 											"key": "altText",
-											"value": "fake alt text",
-											"type": "text"
+											"value": "Fake alt text",
+											"description": "Optional",
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -807,7 +814,7 @@
 									"urlencoded": []
 								},
 								"url": {
-									"raw": "{{baseUrlV1}}/bookings?customerName=Spinka&modelIds[]=1&fromDate=2024-12-21&toDate=2024-12-28&pageSize=10",
+									"raw": "{{baseUrlV1}}/bookings?pageSize=10",
 									"host": [
 										"{{baseUrlV1}}"
 									],
@@ -817,11 +824,13 @@
 									"query": [
 										{
 											"key": "customerName",
-											"value": "Spinka"
+											"value": "Spinka",
+											"disabled": true
 										},
 										{
 											"key": "modelIds[]",
-											"value": "1"
+											"value": "1",
+											"disabled": true
 										},
 										{
 											"key": "modelIds[]",
@@ -830,11 +839,13 @@
 										},
 										{
 											"key": "fromDate",
-											"value": "2024-12-21"
+											"value": "2024-12-21",
+											"disabled": true
 										},
 										{
 											"key": "toDate",
-											"value": "2024-12-28"
+											"value": "2024-12-28",
+											"disabled": true
 										},
 										{
 											"key": "pageSize",
@@ -884,6 +895,7 @@
 										{
 											"key": "bookingDate",
 											"value": "2012-10-3",
+											"description": "Required",
 											"type": "text"
 										}
 									]
